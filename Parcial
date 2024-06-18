@@ -1,0 +1,44 @@
+# Programa para capturar notas de estudiantes y calcular sus promedios
+#Yahiris Enc.
+# 24-1045
+
+def main():
+    estudiantes = []
+    agregar_otro = 'sí'
+
+    while agregar_otro.lower() == 'sí':
+        
+        nombre = input("Ingrese el nombre del estudiante: ")
+        matricula = input("Ingrese la matrícula del estudiante: ")
+
+        
+        notas = []
+        for i in range(4):
+            while True:
+                nota = input(f"Ingrese la nota {i + 1}: ")
+                try:
+                    nota = float(nota)
+                    if nota < 0:
+                        print("La nota no puede ser negativa. Intente nuevamente.")
+                    else:
+                        notas.append(nota)
+                        break
+                except ValueError:
+                    print("Entrada inválida. Por favor, ingrese un número.")
+
+       
+        promedio = sum(notas) / 4
+
+        
+        estudiantes.append([nombre, matricula, notas, promedio])
+
+        
+        agregar_otro = input("¿Quiere saber el promedio de otro estudiante? (sí/no): ")
+
+    
+    print("\nPromedios de los estudiantes:")
+    for estudiante in estudiantes:
+        print(f"Nombre: {estudiante[0]}, Matrícula: {estudiante[1]}, Promedio: {estudiante[3]:.2f}")
+
+if __name__ == "__main__":
+    main()
